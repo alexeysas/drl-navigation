@@ -70,7 +70,6 @@ The parameters are below works well. Tring to tune them does not affect learning
 
 ```python
 
-# simple agent with learning every 4 steps and updating target network with every 16 steps
 hyperparams = { "BUFFER_SIZE" : int(1e5),  # replay buffer size
                 "BATCH_SIZE" : 64,         # minibatch size
                 "GAMMA" : 0.99,             # discount factor
