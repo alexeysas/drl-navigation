@@ -4,10 +4,11 @@
 [image2]: images/n1.png "Q-Network"
 [image3]: images/n2.png "Dueling Q-Network"
 [image4]: images/bellman.png "Bellman equation"
-[image5]: images/eq2.png "Bellman equation"
+[image5]: images/eq2.png "eq2"
 [image6]: images/loss.png "loss"
 [image7]: images/algorithm.png "Algorithm"
 [image8]: images/dqn.png "Dqn"
+[image9]: images/comparison.png "comparison"
 
 #  Navigation
 
@@ -18,25 +19,27 @@ The goal of the project is to train agent to Solve "Bananas" environment. You ca
 
 ### Solution Summary
 
-To solve the environment, we are going to use Deep Q-learning with experience replay algorithm published in the [the DeepMind paper] (https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). We need to calculate optimal action-value function Q:
+To solve the environment, we are going to use Deep Q-learning with experience replay algorithm published in the [the DeepMind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). We need to calculate optimal action-value function Q:
 
 ![Action-value function][image1]
 
-The problem is that our state space is continuous with 37 dimensions, so we cannot use traditional temporal-difference method like SARSA or [Q-learning] (http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.80.7501&rep=rep1&type=pdf). Of course, this task can be solved with discretization techniques like: Tile Coding or Course Coding. However as described in the paper the better results can be archived with function approximation approach and using of Neural Network as a universal function approximator for this purpose.  So we approximating true action-value function q(S,a) with function q(S,a,w). Our goal is to optimize parameters w to make approximation as good as possible.
+The problem is that our state space is continuous with 37 dimensions, so we cannot use traditional temporal-difference method like SARSA or [Q-learning](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.80.7501&rep=rep1&type=pdf). Of course, this task can be solved with discretization techniques like: Tile Coding or Course Coding. However as described in the paper the better results can be archived with function approximation approach and using of Neural Network as a universal function approximator for this purpose.  So we approximating true action-value function q(S,a) with function q(S,a,w). Our goal is to optimize parameters w to make approximation as good as possible.
 
 It was a known fact that reinforcement learning is unstable when a Q function is represented with neural network. Authors introduced two additional ideas to overcome these limitations:
     - Experience replay - the mechanism to store observed tuples of (state, action, next_state, is_terminal) in the special buffer and randomly sample these tuples during learning process. Firstly, it allows to reuse observed tuples for training repeatedly, secondly it breaks correlation with latest observed sequence.
     - Target values are stored in the separate network with same architecture and only periodically updated reducing correlation with latest target values.
 
-As any other reinforcement learning algorithms the action-value function is estimated by using the Bellman equation as an iterative update: ![Action-value function][image4]
+As any other reinforcement learning algorithms the action-value function is estimated by using the Bellman equation as an iterative update: 
 
-The issue is that we do not have actual target values - so we estimate them from: ![Action-value function][image5]. Using weights from previous target network which was fixed on some previous iterations.
+![Action-value function][image4]
 
-This leads to optimization of the loss function:
+The issue is that we do not have actual target values - so we estimate them from: 
 
+![Action-value function][image5]. 
+
+Using weights from previous target network which was fixed on some previous iterations. This leads to optimization of the loss function:
 
 ![Action-value function][image6]
-
 
 So the final algorithm is: [(from original paper)](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
 
@@ -62,6 +65,20 @@ Network was trained on the 1500 iterations. And result can be seen on the diagra
 ![network architecture][image8]
 
 As you can see environment was solved around 600 episodes. And maximum average score over 100 episodes is 17.01. Which is pretty good result.
+
+The parameters are below works well. Tring to tune them does not affect learning in a better way.  Moreover, some results slightly different from the results from the paper. For example, trying to reduce frequency it which target network weights are updated from learning network leads to noticeable worse training process.
+
+```python
+
+hyperparams = { "BUFFER_SIZE" : int(1e5),  # replay buffer size
+                "BATCH_SIZE" : 64,         # minibatch size
+                "GAMMA" : 0.99,             # discount factor
+                "TAU" : 1e-3,               # for soft update of target parameters
+                "LR" : 5e-4,                # learning rate 
+                "UPDATE_EVERY" : 5,         # how often to update the network
+                "UPDATE_TARGET_EVERY" : 7  # how often to update target network 
+              }
+```
 
 ### Variations 
 
