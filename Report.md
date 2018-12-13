@@ -1,6 +1,6 @@
 [//]: # (Image References)
 
-[image1]: images/q_formula.png "Q Formula"
+[image1]: images/q_formula.png "Action-value function"
 
 #  Navigation
 
@@ -11,10 +11,11 @@ The goal of the project is to train agent to Solve "Bananas" environemnt. You ca
 
 ### Solution Summary
 
-To solve the environment we are going to use Deep Q-learning with experience replay algorithm published in the [the Deepmind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). We need to calculate optimal action value function Q:
+To solve the environment we are going to use Deep Q-learning with experience replay algorithm published in the [the Deepmind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). We need to calculate optimal action-value function Q:
 
-![Q][image1]
+![Action-value function][image1]
 
+The problem is that our state space is continius  with 37 dimensions so we can not use traditional temporal-difference method like SARSA or [Q-learning](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.80.7501&rep=rep1&type=pdf)
 
 
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana.  Thus, the goal of your agent is to collect as many yellow bananas as possible while avoiding blue bananas.  
