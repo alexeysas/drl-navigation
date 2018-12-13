@@ -19,6 +19,13 @@ To solve the environment we are going to use Deep Q-learning with experience rep
 
 The problem is that our state space is continius  with 37 dimensions so we can not use traditional temporal-difference method like SARSA or [Q-learning](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.80.7501&rep=rep1&type=pdf). Of course this task can be solved with descritisations techniques like: Tile Coding or Course Coding. However as described in the paper the better results can be archived with function approimation aproach and using of Neural Network as a universal function aproximator for this purpose.  So we approaximating true action-value function q(S,a) with function q(S,a,w). Our goal is to optimize parameters w to make approximatein as good as possible.
 
+It was a known fact that reinfercement learning is unstable when a Q function is represented with newral network. Autwors introduced two additional ideas:
+
+    - Expirience replay - the mecjanomt to store observed tuples of (state, action, next_state, is_terminal) in the special buffer and randomly sample these tuples during 
+    - Target values are stored in the separate network with same archtiecture and only periodicaly updated reducing correlation with target
+    
+ So the final idea of the algorithm is to parameterize an approximate value function
+
 ### Network archtiecture
 
 ![network architecture][image2]
