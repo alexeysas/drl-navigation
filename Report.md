@@ -7,6 +7,7 @@
 [image5]: images/eq2.png "Bellman equation"
 [image6]: images/loss.png "loss"
 [image7]: images/algorithm.png "Algorithm"
+[image8]: images/dqn.png "Dqn"
 
 #  Navigation
 
@@ -57,36 +58,37 @@ Relu is used as activation function and Dropout as regularization technique.
 
 Network was trained on the 1500 iterations. And result can be seen below.
 
+![network architecture][image8]
+
+As you can see enviroment was soleved around 600 episode. And maximum average score over 100 episeods is 17.01. Which is prety good result. 
+
 ### Variations 
 
-1. The Double DQN
+Additinaly couple additional improvements was tried for this environment desacribed
 
-2. Dueling DQN: 
+1. The Double DQN: the Deepmind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+
+2. Dueling DQN with following architecture below: 
 
 ![ Dueling DQN][image3]
 
-### Getting Started
+3. Combination of Dueling and  Double DQN
 
-1. Download the environment from one of the links below.  You need only select the environment that matches your operating system:
-    - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
-    - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
-    - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)
-    - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
-    
-    (_For Windows users_) Check out [this link](https://support.microsoft.com/en-us/help/827218/how-to-determine-whether-a-computer-is-running-a-32-bit-version-or-64) if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.
 
-    (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux_NoVis.zip) to obtain the environment.
+### Next Step
 
-2. Install Anaconda for Python 3: https://www.anaconda.com/download/
-3. Setup Anaconda environment:
-    - conda create --name bananas python=3.6 
-    - conda activate bananas 
-    - python -m ipykernel install --user --name bananas --display-name "bananas"
-4. Install required packages:
-    - pip install numpy 
-    - pip install unityagents
-    - conda install pytorch torchvision cuda90 -c pytorch    
+There are possible additional improvements might be tried described in the Rainbow paiper: https://arxiv.org/pdf/1710.02298.pdf
 
-### Instructions
+1. Prioritized expiriebce relay https://arxiv.org/pdf/1710.02298.pdf
+2. Distributional RL
+3. Noisy nets https://arxiv.org/pdf/1710.02298.pdf
 
-Run Notebook using command "jupyter notebook" and follow the instructions in `Navigation.ipynb` to get started with training the agent!  
+to improve results
+
+Additinal improvements might be related to environment state itself.  The first idea is relatede to sobserved behavior: it might be benefitial to add additional value to state vector which idicates how much time left to complete the episode. The intuition behind that is that same states in the beginingof episode and at the end of episode have different values. THe most vivid example is when you surroundede by black bananas - in the begining of the episode it makes sense just go and collect banana to geout of at cost of -1 points and compensate later as at the end of the episode it might have more sense to just stay and wait while episode completed.
+
+And final step was to try to learn agent from he raw pixl data using Convolutional netwrok as originaly proposed in the paper.  Also ther might be benefitial to use Recurrent or long sequence of fremaes to  "remember" what agenmt seen couple of seconds ago - expecial usefl when agent is rotated at 180% aand this information is lost. 
+
+
+
+
