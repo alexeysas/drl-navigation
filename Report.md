@@ -18,7 +18,7 @@ The goal of the project is to train agent to Solve "Bananas" environment. You ca
 
 ### Solution Summary
 
-To solve the environment, we are going to use Deep Q-learning with experience replay algorithm published in the [the DeepMind paper] (https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). We need to calculate optimal action-value function Q:
+To solve the environment, we are going to use Deep Q-learning with experience replay algorithm published in the [the DeepMind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). We need to calculate optimal action-value function Q:
 
 ![Action-value function][image1]
 
