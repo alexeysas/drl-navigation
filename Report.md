@@ -3,7 +3,9 @@
 [image1]: images/q_formula.png "Action-value function"
 [image2]: images/n1.png "Q-Network"
 [image3]: images/n2.png "Dueling Q-Network"
-[image4]: images/n2.png "Bellman equation"
+[image4]: images/bellman.png "Bellman equation"
+[image5]: images/eq2.png "Bellman equation"
+[image6]: images/loss.png "Bellman equation"
 
 #  Navigation
 
@@ -24,7 +26,14 @@ It was a known fact that reinfercement learning is unstable when a Q function is
     - Expirience replay - the mechanizm to store observed tuples of (state, action, next_state, is_terminal) in the special buffer and randomly sample these tuples during learning process. Fistly, it allows to resue observed tuples for training over and over agin, secondly it breaks correlation with latest observed sequence.
     - Target values are stored in the separate network with same archtiecture and only periodicaly updated reducing correlation with latest target values.
 
-As any other reinforcement learning algorithms the action-value function is estimated by using the Bellman equation as an iterative update:
+As any other reinforcement learning algorithms the action-value function is estimated by using the Bellman equation as an iterative update: ![Action-value function][image4]
+
+The issue is that we do not have actual target values - so we estimate them from: ![Action-value function][image5]. Useing weights from previous target network which was fixed on some previous iterations.
+
+This leads to optimization of the loss function:
+
+![Action-value function][image6]
+
 
 ### Network archtiecture
 
