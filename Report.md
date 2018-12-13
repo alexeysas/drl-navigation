@@ -84,30 +84,33 @@ hyperparams = { "BUFFER_SIZE" : int(1e5),  # replay buffer size
 
 Additionally, couple of improvements for the algorithm was tried for the environment described:
 
-1. The Double DQN: the DeepMind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+1. [The Double DQN](https://arxiv.org/abs/1509.06461)
 
-2. Dueling DQN with following architecture below: 
+2. [Dueling DQN](https://arxiv.org/abs/1511.06581) with following architecture below: 
 
 ![ Dueling DQN][image3]
 
-3. Combination of Dueling and  Double DQN
+3. Combination of Dueling and Double DQN
+
+The comparison results can be seen on the diagram below:
+
+![Comparison][image9]
+
+As a conclusion it looks like that learning curves are pretty similar and converge to score value in interval [16, 17]. The proposed improvements seem do not have strong effect on the learning process for the current environment. The only noticeable positive effect of Dueling DQN (and Dueling DDQN) is that they have more stable learning curve while simple DQN shows signs of overfitting at the end of training process. Also interesting fact that DDQN curve is slightly different and learning is slower, however still converges to  score = 16.
+
+### Next Steps
+
+1. There are possible additional improvements might be tried described in the [Rainbow paper](https://arxiv.org/pdf/1710.02298.pdf)
+
+   - [Prioritized experience relay](https://arxiv.org/abs/1511.05952)
+   - [Distributional RL](https://arxiv.org/abs/1707.06887)
+   - [Noisy nets](https://arxiv.org/abs/1706.10295)
 
 
+2. Also additional improvements might be related to the environment state itself.  The idea is related to some observed behavior during training process when agent stack between black bananas. It might be beneficial to add additional value to state vector which indicates how much time left to complete the episode. The intuition behind that is that same states in the beginning of the episode and at the end of episode have different values. The most vivid example is when you surrounded by black bananas - in the beginning of the episode it makes sense just go and collect banana to get out of trap at cost of the -1 points and compensate later. As at the end of the episode it might have more sense to just stay and wait while episode completed.
 
-### Next Step
+3. And the final step was to try to learn agent from the raw pixel data using Convolutional network as originally proposed in the DeepMind paper.  Also there might be good idea to use Recurrent Net or long sequence of frames with Convolutional Net to "remember" what agent seen couple of seconds ago – which is especially useful when agent is rotated at 180 degrees and this information is lost.
 
-There are possible additional improvements might be tried described in the Rainbow paiper: https://arxiv.org/pdf/1710.02298.pdf
+### Sample 
 
-1. Prioritized expiriebce relay https://arxiv.org/pdf/1710.02298.pdf
-2. Distributional RL
-3. Noisy nets https://arxiv.org/pdf/1710.02298.pdf
-
-to improve results
-
-Additinal improvements might be related to environment state itself.  The first idea is relatede to sobserved behavior: it might be benefitial to add additional value to state vector which idicates how much time left to complete the episode. The intuition behind that is that same states in the beginingof episode and at the end of episode have different values. THe most vivid example is when you surroundede by black bananas - in the begining of the episode it makes sense just go and collect banana to geout of at cost of -1 points and compensate later as at the end of the episode it might have more sense to just stay and wait while episode completed.
-
-And final step was to try to learn agent from he raw pixl data using Convolutional netwrok as originaly proposed in the paper.  Also ther might be benefitial to use Recurrent or long sequence of fremaes to  "remember" what agenmt seen couple of seconds ago - expecial usefl when agent is rotated at 180% aand this information is lost. 
-
-
-
-
+Here is sample of performance of the Dueling DDQN agent with averege score = 17:  https://github.com/alexeysas/drl-navigation/blob/master/video/test.mp4
