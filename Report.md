@@ -111,3 +111,6 @@ As a conclusion it looks like that learning curves are pretty similar and conver
 
 3. And the final step was to try to learn agent from the raw pixel data using Convolutional network as originally proposed in the DeepMind paper.  Also there might be good idea to use Recurrent Net or long sequence of frames with Convolutional Net to "remember" what agent seen couple of seconds ago – which is especially useful when agent is rotated at 180 degrees and this information is lost.
 
+### Sample 
+
+Here is sample of performance of the Dueling DDQN agent with averege score = 17:  https://github.com/alexeysas/drl-navigation/blob/master/video/test.mp4
