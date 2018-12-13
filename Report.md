@@ -45,14 +45,17 @@ So the final algorithm is: [(from original paper)](https://storage.googleapis.co
 
 We have different network architecture then described in the paper. Archtiecture is designed there to capture featrues from the eaw pixel data - so Convolutional network is natural fit there. WE have simplified state vector instead so pure Fully Connected network must work relatively well.
 
-The overall architecture is presented on the image below:
+The overall architecture which provides good results for the enviroments is presented on the image below:
 
 
 ![network architecture][image2]
 
 
-Bsicly we have 3 layers with 2
+Relu is used as activation function and Dropout as regularization technique.
 
+### Training 
+
+Network was trained on the 1500 iterations. And result can be seen below.
 
 ### Variations 
 
