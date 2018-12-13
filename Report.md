@@ -13,26 +13,27 @@
 
 ### Goal
 
-The goal of the project is to train agent to Solve "Bananas" environemnt. You can found detailed description of the environemnt following the [link](README.md) 
+The goal of the project is to train agent to Solve "Bananas" environment. You can find detailed description of the environment following the [link](README.md) 
 
 
 ### Solution Summary
 
-To solve the environment we are going to use Deep Q-learning with experience replay algorithm published in the [the Deepmind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). We need to calculate optimal action-value function Q:
+To solve the environment, we are going to use Deep Q-learning with experience replay algorithm published in the [the DeepMind paper] (https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf). We need to calculate optimal action-value function Q:
 
 ![Action-value function][image1]
 
-The problem is that our state space is continius  with 37 dimensions so we can not use traditional temporal-difference method like SARSA or [Q-learning](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.80.7501&rep=rep1&type=pdf). Of course this task can be solved with descritisations techniques like: Tile Coding or Course Coding. However as described in the paper the better results can be archived with function approimation aproach and using of Neural Network as a universal function aproximator for this purpose.  So we approaximating true action-value function q(S,a) with function q(S,a,w). Our goal is to optimize parameters w to make approximatein as good as possible.
+The problem is that our state space is continuous with 37 dimensions, so we cannot use traditional temporal-difference method like SARSA or [Q-learning] (http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.80.7501&rep=rep1&type=pdf). Of course, this task can be solved with discretization techniques like: Tile Coding or Course Coding. However as described in the paper the better results can be archived with function approximation approach and using of Neural Network as a universal function approximator for this purpose.  So we approximating true action-value function q(S,a) with function q(S,a,w). Our goal is to optimize parameters w to make approximation as good as possible.
 
-It was a known fact that reinfercement learning is unstable when a Q function is represented with newral network. Autwors introduced two additional ideas:
-    - Expirience replay - the mechanizm to store observed tuples of (state, action, next_state, is_terminal) in the special buffer and randomly sample these tuples during learning process. Fistly, it allows to resue observed tuples for training over and over agin, secondly it breaks correlation with latest observed sequence.
-    - Target values are stored in the separate network with same archtiecture and only periodicaly updated reducing correlation with latest target values.
+It was a known fact that reinforcement learning is unstable when a Q function is represented with neural network. Authors introduced two additional ideas to overcome these limitations:
+    - Experience replay - the mechanism to store observed tuples of (state, action, next_state, is_terminal) in the special buffer and randomly sample these tuples during learning process. Firstly, it allows to reuse observed tuples for training repeatedly, secondly it breaks correlation with latest observed sequence.
+    - Target values are stored in the separate network with same architecture and only periodically updated reducing correlation with latest target values.
 
 As any other reinforcement learning algorithms the action-value function is estimated by using the Bellman equation as an iterative update: ![Action-value function][image4]
 
-The issue is that we do not have actual target values - so we estimate them from: ![Action-value function][image5]. Useing weights from previous target network which was fixed on some previous iterations.
+The issue is that we do not have actual target values - so we estimate them from: ![Action-value function][image5]. Using weights from previous target network which was fixed on some previous iterations.
 
 This leads to optimization of the loss function:
+
 
 ![Action-value function][image6]
 
@@ -42,11 +43,11 @@ So the final algorithm is: [(from original paper)](https://storage.googleapis.co
 ![network architecture][image7]
 
 
-### Network archtiecture
+### Network architecture
 
-We have different network architecture then described in the paper. Archtiecture is designed there to capture featrues from the eaw pixel data - so Convolutional network is natural fit there. WE have simplified state vector instead so pure Fully Connected network must work relatively well.
+We have different network architecture then described in the paper. Reference architecture is designed to capture features from the raw pixel data - so Convolutional network is natural choice there. However, we have simplified state vector instead, so pure fully connected network must work relatively well for our problem.
 
-The overall architecture which provides good results for the enviroments is presented on the image below:
+The overall architecture which provides good results for the environment is presented on the image below:
 
 
 ![network architecture][image2]
@@ -56,23 +57,24 @@ Relu is used as activation function and Dropout as regularization technique.
 
 ### Training 
 
-Network was trained on the 1500 iterations. And result can be seen below.
+Network was trained on the 1500 iterations. And result can be seen on the diagram below.
 
 ![network architecture][image8]
 
-As you can see enviroment was soleved around 600 episode. And maximum average score over 100 episeods is 17.01. Which is prety good result. 
+As you can see environment was solved around 600 episodes. And maximum average score over 100 episodes is 17.01. Which is pretty good result.
 
 ### Variations 
 
-Additinaly couple additional improvements was tried for this environment desacribed
+Additionally, couple of improvements for the algorithm was tried for the environment described:
 
-1. The Double DQN: the Deepmind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+1. The Double DQN: the DeepMind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
 
 2. Dueling DQN with following architecture below: 
 
 ![ Dueling DQN][image3]
 
 3. Combination of Dueling and  Double DQN
+
 
 
 ### Next Step
