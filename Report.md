@@ -1,8 +1,8 @@
 [//]: # (Image References)
 
 [image1]: images/q_formula.png "Action-value function"
-[image2]: images/nn1.png "Q-Network"
-[image3]: images/nn1.png "Dueling Q-Network"
+[image2]: images/n1.png "Q-Network"
+[image3]: images/n2.png "Dueling Q-Network"
 
 #  Navigation
 
