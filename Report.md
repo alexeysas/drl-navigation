@@ -6,12 +6,12 @@
 
 ### Goal
 
-The goal of the project is to train agent to Solve "Bananas" environemnt. You can found detailed description of the environemnt following the [a link](README.md) 
+The goal of the project is to train agent to Solve "Bananas" environemnt. You can found detailed description of the environemnt following the [link](README.md) 
 
 
 ### Solution Summary
 
-To solve the environment we are going to use Deep Q-learning with experience replay algorithm published in the [a the Deepmind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+To solve the environment we are going to use Deep Q-learning with experience replay algorithm published in the [the Deepmind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
 
 
 
