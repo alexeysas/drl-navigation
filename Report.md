@@ -33,14 +33,15 @@ The task is episodic, and in order to solve the environment, agent must get an a
     (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux_NoVis.zip) to obtain the environment.
 
 2. Install Anaconda for Python 3: https://www.anaconda.com/download/
-3. Create Anaconda environment:
-    - python -m ipykernel install --user --name drlnd --display-name "bananas"
-    - conda activate bananas
-4. Install required python packages:
+3. Setup Anaconda environment:
+    - conda create --name bananas python=3.6 
+    - conda activate bananas 
+    - python -m ipykernel install --user --name bananas --display-name "bananas"
+4. Install required packages:
     - pip install numpy 
     - pip install unityagents
-    - conda install pytorch torchvision cuda90 -c pytorch
+    - conda install pytorch torchvision cuda90 -c pytorch    
 
 ### Instructions
 
-Follow the instructions in `Navigation.ipynb` to get started with training your own agent!  
+Run Notebook using command "jupyter notebook" and follow the instructions in `Navigation.ipynb` to get started with training the agent!  
