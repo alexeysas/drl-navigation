@@ -8,6 +8,7 @@
 [image6]: images/loss.png "loss"
 [image7]: images/algorithm.png "Algorithm"
 [image8]: images/dqn.png "Dqn"
+[image9]: images/comparison.png "comparison"
 
 #  Navigation
 
@@ -64,6 +65,21 @@ Network was trained on the 1500 iterations. And result can be seen on the diagra
 ![network architecture][image8]
 
 As you can see environment was solved around 600 episodes. And maximum average score over 100 episodes is 17.01. Which is pretty good result.
+
+The parameters are below works well. Tring to tune them does not affect learning in a better way.  Moreover, some results slightly different from the results from the paper. For example, trying to reduce frequency it which target network weights are updated from learning network leads to noticeable worse training process.
+
+```python
+
+# simple agent with learning every 4 steps and updating target network with every 16 steps
+hyperparams = { "BUFFER_SIZE" : int(1e5),  # replay buffer size
+                "BATCH_SIZE" : 64,         # minibatch size
+                "GAMMA" : 0.99,             # discount factor
+                "TAU" : 1e-3,               # for soft update of target parameters
+                "LR" : 5e-4,                # learning rate 
+                "UPDATE_EVERY" : 5,         # how often to update the network
+                "UPDATE_TARGET_EVERY" : 7  # how often to update target network 
+              }
+```
 
 ### Variations 
 
