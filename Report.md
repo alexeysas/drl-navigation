@@ -2,11 +2,12 @@
 
 [image1]: https://user-images.githubusercontent.com/10624937/42135619-d90f2f28-7d12-11e8-8823-82b970a54d7e.gif "Trained Agent"
 
-# Project 1: Navigation
+#  Navigation
 
-### Introduction
+### Goal
 
-For this project, we will train an agent to navigate (and collect bananas!) in a large, square world.  
+The goal of the preoject is to train Deep Reinforcement Learning agent to Solve "Bananas" environemnt described in the [a relative link](readme.md) using Deep Q-learning with experience replay algorithm from the Deepmidnd paper [a link](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+
 
 ![Trained Agent][image1]
 
