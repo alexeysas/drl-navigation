@@ -5,7 +5,8 @@
 [image3]: images/n2.png "Dueling Q-Network"
 [image4]: images/bellman.png "Bellman equation"
 [image5]: images/eq2.png "Bellman equation"
-[image6]: images/loss.png "Bellman equation"
+[image6]: images/loss.png "loss"
+[image7]: images/algorithm.png "Algorithm"
 
 #  Navigation
 
@@ -35,7 +36,14 @@ This leads to optimization of the loss function:
 ![Action-value function][image6]
 
 
+So the final algorithm is: [(from original paper)](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+
+![network architecture][image7]
+
+
 ### Network archtiecture
+
+We have different network architecture then described in the paper. Archtiecture is designed there to capture featrues from the eaw pixel data - so Convolutional network is natural fit there. WE have simplified state vector instead so pure Fully Connected network must work relatively well.
 
 ![network architecture][image2]
 
