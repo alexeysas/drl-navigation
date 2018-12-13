@@ -4,7 +4,7 @@
 [image2]: images/n1.png "Q-Network"
 [image3]: images/n2.png "Dueling Q-Network"
 [image4]: images/bellman.png "Bellman equation"
-[image5]: images/eq2.png "Bellman equation"
+[image5]: images/eq2.png "eq2"
 [image6]: images/loss.png "loss"
 [image7]: images/algorithm.png "Algorithm"
 [image8]: images/dqn.png "Dqn"
