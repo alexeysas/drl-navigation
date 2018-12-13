@@ -28,15 +28,14 @@ It was a known fact that reinforcement learning is unstable when a Q function is
     - Experience replay - the mechanism to store observed tuples of (state, action, next_state, is_terminal) in the special buffer and randomly sample these tuples during learning process. Firstly, it allows to reuse observed tuples for training repeatedly, secondly it breaks correlation with latest observed sequence.
     - Target values are stored in the separate network with same architecture and only periodically updated reducing correlation with latest target values.
 
-As any other reinforcement learning algorithms the action-value function is estimated by using the Bellman equation as an iterative update: ![Action-value function][image4]
+As any other reinforcement learning algorithms the action-value function is estimated by using the Bellman equation as an iterative update: 
+![Action-value function][image4]
 
-The issue is that we do not have actual target values - so we estimate them from: ![Action-value function][image5]. Using weights from previous target network which was fixed on some previous iterations.
-
-This leads to optimization of the loss function:
-
+The issue is that we do not have actual target values - so we estimate them from: 
+![Action-value function][image5]. 
+Using weights from previous target network which was fixed on some previous iterations. This leads to optimization of the loss function:
 
 ![Action-value function][image6]
-
 
 So the final algorithm is: [(from original paper)](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
 
