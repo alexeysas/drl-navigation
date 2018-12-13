@@ -84,15 +84,19 @@ hyperparams = { "BUFFER_SIZE" : int(1e5),  # replay buffer size
 
 Additionally, couple of improvements for the algorithm was tried for the environment described:
 
-1. The Double DQN: the DeepMind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+1. [The Double DQN](https://arxiv.org/abs/1509.06461)
 
-2. Dueling DQN with following architecture below: 
+2. [Dueling DQN](https://arxiv.org/abs/1511.06581) with following architecture below: 
 
 ![ Dueling DQN][image3]
 
-3. Combination of Dueling and  Double DQN
+3. Combination of Dueling and Double DQN
 
+The comparison results can be seen on the diagram below:
 
+![Comparison][image9]
+
+As a conclusion it looks like that learning curves are pretty similar and converge to score value in interval [16, 17]. The proposed improvements seem do not have strong effect on the learning process for the current environment. The only noticeable positive effect of Dueling DQN (and Dueling DDQN) is that they have more stable learning curve while simple DQN shows signs of overfitting at the end of training process. Also interesting fact that DDQN curve is slightly different and learning is slower, however still converges to  score = 16.
 
 ### Next Steps
 
