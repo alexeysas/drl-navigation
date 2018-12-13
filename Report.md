@@ -6,7 +6,7 @@
 
 ### Goal
 
-The goal of the preoject is to train Deep Reinforcement Learning agent to Solve "Bananas" environemnt described in the [a readme.md](Readme.md) using Deep Q-learning with experience replay algorithm from [a the Deepmind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+The goal of the preoject is to train Deep Reinforcement Learning agent to Solve "Bananas" environemnt described in the [a readme.md](README.md) using Deep Q-learning with experience replay algorithm from [a the Deepmind paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
 
 
 ![Trained Agent][image1]
